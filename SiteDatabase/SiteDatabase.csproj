@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\PagedQuery.cs" />
     <Compile Include="ContestDataContext.cs" />
     <Compile Include="Entities\ContestEntity.cs" />
     <Compile Include="Entities\ProblemCategoryEntity.cs" />

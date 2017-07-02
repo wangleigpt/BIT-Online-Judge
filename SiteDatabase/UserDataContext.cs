@@ -115,12 +115,12 @@ namespace BITOJ.Data
         /// </summary>
         /// <param name="group">要查询的用户组。</param>
         /// <returns>给定用户组中所有的用户实体数据。</returns>
-        public IList<UserAuthorizationEntity> QueryUserAuthorizationEntities(UserGroup userGroup)
+        public IQueryable<UserAuthorizationEntity> QueryUserAuthorizationEntities(UserGroup userGroup)
         {
             var entities = from item in UserAuthorization
                            where item.Group == userGroup
                            select item;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace BITOJ.Data
         /// 如果给定的队伍名称未在数据库中找到，返回 null。
         /// </returns>
         /// <exception cref="ArgumentNullException"/>
-        public IList<TeamProfileEntity> QueryTeamProfileEntity(string teamName)
+        public IQueryable<TeamProfileEntity> QueryTeamProfileEntity(string teamName)
         {
             if (teamName == null)
                 throw new ArgumentNullException(nameof(teamName));
@@ -164,7 +164,7 @@ namespace BITOJ.Data
             var entities = from item in TeamProfiles
                            where item.Name == teamName
                            select item;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace BITOJ.Data
         /// <param name="username">要查询的用户名。</param>
         /// <returns>一个列表，该列表包含了与指定用户相关联的所有用户 - 队伍关系实体对象。</returns>
         /// <exception cref="ArgumentNullException"/>
-        public IList<UserTeamRelationEntity> QueryUserTeamRelationEntitiesByUsername(string username)
+        public IQueryable<UserTeamRelationEntity> QueryUserTeamRelationEntitiesByUsername(string username)
         {
             if (username == null)
                 throw new ArgumentNullException(nameof(username));
@@ -181,7 +181,7 @@ namespace BITOJ.Data
             var entities = from item in UserTeams
                            where item.Username == username
                            select item;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>
@@ -189,12 +189,12 @@ namespace BITOJ.Data
         /// </summary>
         /// <param name="teamId">要查询的队伍 ID 。</param>
         /// <returns>一个列表，该列表包含了与指定队伍相关联的所有用户 - 队伍关系实体对象。</returns>
-        public IList<UserTeamRelationEntity> QueryUserTeamRelationEntitiesByTeamId(int teamId)
+        public IQueryable<UserTeamRelationEntity> QueryUserTeamRelationEntitiesByTeamId(int teamId)
         {
             var entities = from item in UserTeams
                            where item.TeamId == teamId
                            select item;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>

@@ -2,7 +2,6 @@ namespace BITOJ.Data
 {
     using BITOJ.Data.Entities;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
 
@@ -53,12 +52,12 @@ namespace BITOJ.Data
         /// 获取所有的根类别实体数据对象。
         /// </summary>
         /// <returns>一个列表对象，该列表中包含当前数据集中所有的根类别实体对象。</returns>
-        public IList<ProblemCategoryEntity> QueryRootCategories()
+        public IQueryable<ProblemCategoryEntity> QueryRootCategories()
         {
             var entities = from item in Categories
                            where item.ParentId == -1
                            select item;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>
@@ -66,12 +65,12 @@ namespace BITOJ.Data
         /// </summary>
         /// <param name="parentCategoryId">父类别实体对象主键。</param>
         /// <returns>一个列表对象，该列表中包含当前数据集中所有的根类别实体对象。</returns>
-        public IList<ProblemCategoryEntity> QuerySubCategoryEntities(int parentCategoryId)
+        public IQueryable<ProblemCategoryEntity> QuerySubCategoryEntities(int parentCategoryId)
         {
             var entities = from item in Categories
                            where item.ParentId == parentCategoryId
                            select item;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>
@@ -90,7 +89,7 @@ namespace BITOJ.Data
         /// <param name="categoryName">要查询的类别名称。</param>
         /// <returns>一个列表，该列表包含了名称为给定值的所有类别实体对象。</returns>
         /// <exception cref="ArgumentNullException"/>
-        public IList<ProblemCategoryEntity> QueryCategoryEntities(string categoryName)
+        public IQueryable<ProblemCategoryEntity> QueryCategoryEntities(string categoryName)
         {
             if (categoryName == null)
                 throw new ArgumentNullException(nameof(categoryName));
@@ -98,16 +97,16 @@ namespace BITOJ.Data
             var entities = from item in Categories
                            where item.Name == categoryName
                            select item;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>
         /// 使用指定的题目 ID 查询该题目的类别实体对象数据。
         /// </summary>
         /// <param name="problemId">要查询的题目的题目 ID 。</param>
-        /// <returns>一个列表，该列表包含了给定题目的所有类别实体对象。</returns>
+        /// <returns>一个列表，该列表包含了给定题目的所有类别实体对象 ID。</returns>
         /// <exception cref="ArgumentNullException"/>
-        public IList<ProblemCategoryEntity> QueryProblemCategoryEntities(string problemId)
+        public IQueryable<int> QueryProblemCategoryEntities(string problemId)
         {
             if (problemId == null)
                 throw new ArgumentNullException(nameof(problemId));
@@ -120,18 +119,7 @@ namespace BITOJ.Data
                            where item.ProblemId == problemId
                            select item.CategoryId;
 
-            // 查询类别对象主键值并得到类别实体对象。
-            List<ProblemCategoryEntity> ret = new List<ProblemCategoryEntity>();
-            foreach (int id in entities)
-            {
-                ProblemCategoryEntity item = QueryCategoryEntity(id);
-                if (item != null)
-                {
-                    ret.Add(item);
-                }
-            }
-
-            return ret;
+            return entities;
         }
 
         /// <summary>
@@ -139,12 +127,12 @@ namespace BITOJ.Data
         /// </summary>
         /// <param name="categoryId">要查询的类别 ID 。</param>
         /// <returns>一个列表，该列表包含了在给定类别中的所有题目 ID 。</returns>
-        public IList<string> QueryProblemsInCategory(int categoryId)
+        public IQueryable<string> QueryProblemsInCategory(int categoryId)
         {
             var entities = from item in Relations
                            where item.CategoryId == categoryId
                            select item.ProblemId;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>

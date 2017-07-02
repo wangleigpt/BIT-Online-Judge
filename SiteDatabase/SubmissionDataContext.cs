@@ -2,7 +2,6 @@ namespace BITOJ.Data
 {
     using BITOJ.Data.Entities;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
 
@@ -39,7 +38,7 @@ namespace BITOJ.Data
         /// <param name="data">要查询的查询数据对象。</param>
         /// <returns>一个列表，该列表包含了所有的查询结果。</returns>
         /// <exception cref="ArgumentNullException"/>
-        public IList<SubmissionEntity> QuerySubmissionEntities(SubmissionQueryHandle data)
+        public IQueryable<SubmissionEntity> QuerySubmissionEntities(SubmissionQueryHandle data)
         {
             if (data == null)
                 throw new ArgumentNullException(nameof(data));
@@ -82,10 +81,8 @@ namespace BITOJ.Data
                 temp = temp.Where(entity => entity.VerdictResult == data.VerdictResult);
             }
 
-            return temp.ToList();
+            return temp;
         }
-
-        // TODO: 为 SubmissionDataContext 添加分页查询支持。
 
         /// <summary>
         /// 更新给定的用户提交记录实体数据。

@@ -2,7 +2,6 @@ namespace BITOJ.Data
 {
     using BITOJ.Data.Entities;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
 
@@ -51,7 +50,7 @@ namespace BITOJ.Data
         /// <param name="title">要查询的标题。</param>
         /// <returns>一个列表，该列表包含了所有标题为给定值的比赛实体对象。</returns>
         /// <exception cref="ArgumentNullException"/>
-        public IList<ContestEntity> QueryContestsByTitle(string title)
+        public IQueryable<ContestEntity> QueryContestsByTitle(string title)
         {
             if (title == null)
                 throw new ArgumentNullException(nameof(title));
@@ -59,7 +58,7 @@ namespace BITOJ.Data
             var entities = from item in Contests
                            where item.Title == title
                            select item;
-            return entities.ToList();
+            return entities;
         }
 
         /// <summary>
@@ -68,7 +67,7 @@ namespace BITOJ.Data
         /// <param name="creator">要查询的作者的用户名。</param>
         /// <returns>一个列表，该列表包含了所有作者为给定值的比赛实体对象。</returns>
         /// <exception cref="ArgumentNullException"/>
-        public IList<ContestEntity> QueryContestsByCreator(string creator)
+        public IQueryable<ContestEntity> QueryContestsByCreator(string creator)
         {
             if (creator == null)
                 throw new ArgumentNullException(nameof(creator));
@@ -76,10 +75,8 @@ namespace BITOJ.Data
             var entities = from item in Contests
                            where item.Creator == creator
                            select item;
-            return entities.ToList();
+            return entities;
         }
-
-        // TODO: 为比赛数据上下文添加分页查询支持。
 
         /// <summary>
         /// 从数据库中移除给定的比赛数据实体。
