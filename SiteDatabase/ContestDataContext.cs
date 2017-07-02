@@ -48,7 +48,7 @@ namespace BITOJ.Data
         /// 按标题查询比赛实体对象。
         /// </summary>
         /// <param name="title">要查询的标题。</param>
-        /// <returns>一个列表，该列表包含了所有标题为给定值的比赛实体对象。</returns>
+        /// <returns>一个可查询对象，该对象包含了所有标题为给定值的比赛实体对象。</returns>
         /// <exception cref="ArgumentNullException"/>
         public IQueryable<ContestEntity> QueryContestsByTitle(string title)
         {
@@ -65,7 +65,7 @@ namespace BITOJ.Data
         /// 按作者查询比赛实体对象。
         /// </summary>
         /// <param name="creator">要查询的作者的用户名。</param>
-        /// <returns>一个列表，该列表包含了所有作者为给定值的比赛实体对象。</returns>
+        /// <returns>一个可查询对象，该对象包含了所有作者为给定值的比赛实体对象。</returns>
         /// <exception cref="ArgumentNullException"/>
         public IQueryable<ContestEntity> QueryContestsByCreator(string creator)
         {
@@ -74,6 +74,45 @@ namespace BITOJ.Data
 
             var entities = from item in Contests
                            where item.Creator == creator
+                           select item;
+            return entities;
+        }
+
+        /// <summary>
+        /// 查询所有未开始的比赛实体对象。
+        /// </summary>
+        /// <returns>一个可查询对象，该对象可查询到所有的未开始的比赛实体对象。</returns>
+        public IQueryable<ContestEntity> QueryUnstartedContests()
+        {
+            DateTime now = DateTime.Now;
+            var entities = from item in Contests
+                           where item.StartTime > now
+                           select item;
+            return entities;
+        }
+
+        /// <summary>
+        /// 查询所有正在进行的比赛实体对象。
+        /// </summary>
+        /// <returns>一个可查询对象，该对象可查询到所有的正在进行的比赛实体对象。</returns>
+        public IQueryable<ContestEntity> QueryRunningContests()
+        {
+            DateTime now = DateTime.Now;
+            var entities = from item in Contests
+                           where item.StartTime <= now && item.EndTime >= now
+                           select item;
+            return entities;
+        }
+
+        /// <summary>
+        /// 查询所有已结束的比赛实体对象。
+        /// </summary>
+        /// <returns>一个可查询对象，该对象可查询到所有的已结束的比赛实体对象。</returns>
+        public IQueryable<ContestEntity> QueryEndedContests()
+        {
+            DateTime now = DateTime.Now;
+            var entities = from item in Contests
+                           where item.EndTime < now
                            select item;
             return entities;
         }

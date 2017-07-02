@@ -152,8 +152,7 @@ namespace BITOJ.Data
         /// </summary>
         /// <param name="teamName">要查询的队伍名称。</param>
         /// <returns>
-        /// 一个列表，该列表包含了给定队伍名称所对应的队伍信息实体对象。
-        /// 如果给定的队伍名称未在数据库中找到，返回 null。
+        /// 一个可查询对象，该对象可查询到给定队伍名称所对应的队伍信息实体对象。
         /// </returns>
         /// <exception cref="ArgumentNullException"/>
         public IQueryable<TeamProfileEntity> QueryTeamProfileEntity(string teamName)
@@ -171,7 +170,7 @@ namespace BITOJ.Data
         /// 使用给定的用户名查询指定用户的所有用户 - 队伍关系实体对象。
         /// </summary>
         /// <param name="username">要查询的用户名。</param>
-        /// <returns>一个列表，该列表包含了与指定用户相关联的所有用户 - 队伍关系实体对象。</returns>
+        /// <returns>一个可查询对象，该对象可查询到与指定用户相关联的所有用户 - 队伍关系实体对象。</returns>
         /// <exception cref="ArgumentNullException"/>
         public IQueryable<UserTeamRelationEntity> QueryUserTeamRelationEntitiesByUsername(string username)
         {
@@ -188,7 +187,7 @@ namespace BITOJ.Data
         /// 使用给定的队伍 ID 查询给定队伍的所有用户 - 队伍关系实体对象。
         /// </summary>
         /// <param name="teamId">要查询的队伍 ID 。</param>
-        /// <returns>一个列表，该列表包含了与指定队伍相关联的所有用户 - 队伍关系实体对象。</returns>
+        /// <returns>一个可查询对象，该对象可查询到与指定队伍相关联的所有用户 - 队伍关系实体对象。</returns>
         public IQueryable<UserTeamRelationEntity> QueryUserTeamRelationEntitiesByTeamId(int teamId)
         {
             var entities = from item in UserTeams

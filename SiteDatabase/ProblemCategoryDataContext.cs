@@ -51,7 +51,7 @@ namespace BITOJ.Data
         /// <summary>
         /// 获取所有的根类别实体数据对象。
         /// </summary>
-        /// <returns>一个列表对象，该列表中包含当前数据集中所有的根类别实体对象。</returns>
+        /// <returns>一个可查询对象，该对象可查询到当前数据集中所有的根类别实体对象。</returns>
         public IQueryable<ProblemCategoryEntity> QueryRootCategories()
         {
             var entities = from item in Categories
@@ -64,7 +64,7 @@ namespace BITOJ.Data
         /// 获取给定类别实体数据对象的所有子类别实体对象。
         /// </summary>
         /// <param name="parentCategoryId">父类别实体对象主键。</param>
-        /// <returns>一个列表对象，该列表中包含当前数据集中所有的根类别实体对象。</returns>
+        /// <returns>一个可查询对象，该对象可查询到当前数据集中所有的根类别实体对象。</returns>
         public IQueryable<ProblemCategoryEntity> QuerySubCategoryEntities(int parentCategoryId)
         {
             var entities = from item in Categories
@@ -87,7 +87,7 @@ namespace BITOJ.Data
         /// 使用指定的类别名称查询类别实体对象数据。
         /// </summary>
         /// <param name="categoryName">要查询的类别名称。</param>
-        /// <returns>一个列表，该列表包含了名称为给定值的所有类别实体对象。</returns>
+        /// <returns>一个可查询对象，该对象可查询到名称为给定值的所有类别实体对象。</returns>
         /// <exception cref="ArgumentNullException"/>
         public IQueryable<ProblemCategoryEntity> QueryCategoryEntities(string categoryName)
         {
@@ -104,7 +104,7 @@ namespace BITOJ.Data
         /// 使用指定的题目 ID 查询该题目的类别实体对象数据。
         /// </summary>
         /// <param name="problemId">要查询的题目的题目 ID 。</param>
-        /// <returns>一个列表，该列表包含了给定题目的所有类别实体对象 ID。</returns>
+        /// <returns>一个可查询对象，该对象可查询到给定题目的所有类别实体对象 ID。</returns>
         /// <exception cref="ArgumentNullException"/>
         public IQueryable<int> QueryProblemCategoryEntities(string problemId)
         {
@@ -126,7 +126,7 @@ namespace BITOJ.Data
         /// 使用指定的类别 ID 查询在该类别下的所有题目 ID 。
         /// </summary>
         /// <param name="categoryId">要查询的类别 ID 。</param>
-        /// <returns>一个列表，该列表包含了在给定类别中的所有题目 ID 。</returns>
+        /// <returns>一个可查询对象，该对象可查询到在给定类别中的所有题目 ID 。</returns>
         public IQueryable<string> QueryProblemsInCategory(int categoryId)
         {
             var entities = from item in Relations

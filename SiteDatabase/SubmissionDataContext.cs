@@ -36,7 +36,7 @@ namespace BITOJ.Data
         /// 使用指定的查询数据对象查询用户提交数据。
         /// </summary>
         /// <param name="data">要查询的查询数据对象。</param>
-        /// <returns>一个列表，该列表包含了所有的查询结果。</returns>
+        /// <returns>一个可查询，该对象可查询到所有的查询结果。</returns>
         /// <exception cref="ArgumentNullException"/>
         public IQueryable<SubmissionEntity> QuerySubmissionEntities(SubmissionQueryHandle data)
         {
