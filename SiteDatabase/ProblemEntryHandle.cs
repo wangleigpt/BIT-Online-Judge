@@ -1,5 +1,6 @@
 ﻿namespace BITOJ.Data
 {
+    using BITOJ.Data.Entities;
     using BITOJ.Data.Models;
     using Newtonsoft.Json;
     using System;
@@ -93,6 +94,20 @@
             set
             {
                 m_config.Authors = value;
+                UpdateModifiedTime();
+                m_dirty = true;
+            }
+        }
+
+        /// <summary>
+        /// 获取或设置允许访问题目的用户组。
+        /// </summary>
+        public UserGroup AuthorizationGroup
+        {
+            get { return m_config.AuthorizationGroup; }
+            set
+            {
+                m_config.AuthorizationGroup = value;
                 UpdateModifiedTime();
                 m_dirty = true;
             }

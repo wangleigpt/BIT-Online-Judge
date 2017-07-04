@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Components\PagedQuery.cs" />
     <Compile Include="ContestDataContext.cs" />
+    <Compile Include="ContestEntryHandle.cs" />
     <Compile Include="Entities\ContestEntity.cs" />
     <Compile Include="Entities\ProblemCategoryEntity.cs" />
     <Compile Include="Entities\ProblemCategoryRelationEntity.cs" />
