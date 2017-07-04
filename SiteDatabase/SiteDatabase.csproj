@@ -75,6 +75,7 @@
     <Compile Include="Entities\ContestEntity.cs" />
     <Compile Include="Entities\ProblemCategoryEntity.cs" />
     <Compile Include="Entities\ProblemCategoryRelationEntity.cs" />
+    <Compile Include="Entities\ProblemEntity.cs" />
     <Compile Include="Entities\SubmissionEntity.cs" />
     <Compile Include="Entities\SubmissionLanguage.cs" />
     <Compile Include="Entities\SubmissionVerdict.cs" />
@@ -92,8 +93,8 @@
     <Compile Include="Models\UserProfileModel.cs" />
     <Compile Include="Models\UserSex.cs" />
     <Compile Include="Models\UserSubmissionStatisticsModel.cs" />
+    <Compile Include="ProblemArchieveDataContext.cs" />
     <Compile Include="ProblemEntryParts.cs" />
-    <Compile Include="ProblemArchieveManager.cs" />
     <Compile Include="ProblemEntryHandle.cs" />
     <Compile Include="ProblemCategoryDataContext.cs" />
     <Compile Include="Models\ProblemConfigurationModel.cs" />
@@ -116,6 +117,13 @@
     <Content Include="Databases\ContestDb_log.ldf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>ContestDb.mdf</DependentUpon>
+    </Content>
+    <Content Include="Databases\ProblemDb.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Databases\ProblemDb_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>ProblemDb.mdf</DependentUpon>
     </Content>
     <Content Include="Databases\SubmissionsDb.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
