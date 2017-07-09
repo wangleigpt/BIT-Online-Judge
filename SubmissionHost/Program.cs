@@ -43,7 +43,7 @@
             }
 
             byte[] verdictKey = (byte[])argSettings["key"];
-            // TO IMPLEMENT HERE.
+
             
             return 0;
         }

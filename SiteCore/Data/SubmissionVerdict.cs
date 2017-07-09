@@ -1,12 +1,12 @@
-﻿namespace BITOJ.Data.Entities
+﻿namespace BITOJ.Core.Data
 {
     /// <summary>
-    /// 表示一个提交的 Judge 结果。
+    /// 编码一个用户提交的判题结果。
     /// </summary>
     public enum SubmissionVerdict : int
     {
         /// <summary>
-        /// 未知的 Judge 结果。
+        /// 未知的判题结果。
         /// </summary>
         Unknown = 0,
 
@@ -51,7 +51,7 @@
         CompilationError = 8,
 
         /// <summary>
-        /// Judge 系统发生内部错误。
+        /// 判题系统发生内部错误。
         /// </summary>
         SystemError = 9,
     }
