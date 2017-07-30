@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteDatabase", "SiteDatabas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SiteCommon", "SiteCommon\SiteCommon.csproj", "{2F99CA8B-A543-481E-82A6-9660EB45466A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubmissionHost", "SubmissionHost\SubmissionHost.csproj", "{454C9A46-CE97-4ECA-A7D2-4196A5809D4E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{2F99CA8B-A543-481E-82A6-9660EB45466A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F99CA8B-A543-481E-82A6-9660EB45466A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F99CA8B-A543-481E-82A6-9660EB45466A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{454C9A46-CE97-4ECA-A7D2-4196A5809D4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{454C9A46-CE97-4ECA-A7D2-4196A5809D4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{454C9A46-CE97-4ECA-A7D2-4196A5809D4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{454C9A46-CE97-4ECA-A7D2-4196A5809D4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
