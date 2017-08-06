@@ -183,7 +183,7 @@
         public void Push(TElement element)
         {
             m_buffer.Add(element);
-            Balance(Count);
+            BalanceToRoot(Count);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@
             m_buffer[1] = m_buffer[Count];
             m_buffer.RemoveAt(Count);
 
-            Balance(RootIndex);
+            BalanceToLeaf();
         }
     }
 }
