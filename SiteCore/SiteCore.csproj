@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -39,6 +45,7 @@
       <HintPath>..\packages\NLog.4.4.10\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,13 +55,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\UserGroup.cs" />
     <Compile Include="Data\InvalidProblemException.cs" />
     <Compile Include="Data\ProblemHandle.cs" />
     <Compile Include="Data\ProblemException.cs" />
+    <Compile Include="Data\ProblemNotExistException.cs" />
+    <Compile Include="Data\Queries\ProblemArchieveQueryParameter.cs" />
     <Compile Include="Data\SubmissionHandle.cs" />
     <Compile Include="Data\SubmissionLanguage.cs" />
     <Compile Include="Data\SubmissionVerdict.cs" />
     <Compile Include="Data\SubmissionVerdictStatus.cs" />
+    <Compile Include="NativeProblemDataProvider.cs" />
+    <Compile Include="Data\Queries\PagedQueryParameters.cs" />
+    <Compile Include="ProblemArchieveManager.cs" />
+    <Compile Include="IProblemDataProvider.cs" />
+    <Compile Include="ProblemDataAccess.cs" />
+    <Compile Include="ProblemDataProviderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolvers\Masks\MaskInterpreter.cs" />
     <Compile Include="Resolvers\Masks\MaskToken.cs" />
@@ -75,7 +91,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ProblemSession.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,15 +27,16 @@
         static ProblemEntryHandle()
         {
             // 初始化 PartFileName 。
-            PartFileName = new Dictionary<ProblemEntryParts, string>();
-
-            PartFileName.Add(ProblemEntryParts.Description, ProblemDescriptionFileName);
-            PartFileName.Add(ProblemEntryParts.InputDescription, ProblemInputDescriptionFileName);
-            PartFileName.Add(ProblemEntryParts.OutputDescription, ProblemOutputDescriptionFileName);
-            PartFileName.Add(ProblemEntryParts.InputSample, ProblemInputSampleFileName);
-            PartFileName.Add(ProblemEntryParts.OutputSample, ProblemOutputSampleFileName);
-            PartFileName.Add(ProblemEntryParts.Hint, ProblemHintFileName);
-            PartFileName.Add(ProblemEntryParts.Source, ProblemSourceFileName);
+            PartFileName = new Dictionary<ProblemEntryParts, string>
+            {
+                { ProblemEntryParts.Description, ProblemDescriptionFileName },
+                { ProblemEntryParts.InputDescription, ProblemInputDescriptionFileName },
+                { ProblemEntryParts.OutputDescription, ProblemOutputDescriptionFileName },
+                { ProblemEntryParts.InputSample, ProblemInputSampleFileName },
+                { ProblemEntryParts.OutputSample, ProblemOutputSampleFileName },
+                { ProblemEntryParts.Hint, ProblemHintFileName },
+                { ProblemEntryParts.Source, ProblemSourceFileName }
+            };
         }
 
         private string m_problemDirectory;
@@ -88,12 +89,12 @@
         /// <summary>
         /// 获取或设置题目的作者的用户名。
         /// </summary>
-        public string[] Authors
+        public string Author
         {
-            get { return m_config.Authors; }
+            get { return m_config.Author; }
             set
             {
-                m_config.Authors = value;
+                m_config.Author = value;
                 UpdateModifiedTime();
                 m_dirty = true;
             }
