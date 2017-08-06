@@ -19,7 +19,7 @@
         /// 获取或设置一个字符串数组，该数组包含了该题目所有作者的用户 ID 。
         /// </summary>
         [JsonProperty("authors")]
-        public string[] Authors { get; set; }
+        public string Author { get; set; }
 
         /// <summary>
         /// 获取或设置该题目的创建时间。
@@ -45,7 +45,7 @@
         public ProblemConfigurationModel()
         {
             Title = string.Empty;
-            Authors = new string[0];
+            Author = string.Empty;
             CreationTime = DateTime.Now;
             LastModifiedTime = DateTime.Now;
             AuthorizationGroup = UserGroup.Guests;

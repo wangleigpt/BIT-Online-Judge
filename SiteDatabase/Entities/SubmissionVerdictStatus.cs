@@ -16,7 +16,7 @@
         Submitted = 1,
 
         /// <summary>
-        /// 用户提交正在被便宜。
+        /// 用户提交正在被编译。
         /// </summary>
         Compiling = 2,
 

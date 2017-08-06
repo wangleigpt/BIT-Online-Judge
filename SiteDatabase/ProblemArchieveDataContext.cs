@@ -19,6 +19,65 @@ namespace BITOJ.Data
         }
 
         /// <summary>
+        /// 使用给定的题目标题在给定的数据集中查询题目实体对象并返回。
+        /// </summary>
+        /// <param name="dataset">全体数据集。</param>
+        /// <param name="title">要查询的题目标题。</param>
+        /// <returns>一个可查询对象，该对象可查询到所有的符合要求的实体对象。</returns>
+        /// <exception cref="ArgumentNullException"/>
+        /// <remarks>
+        /// 在第一个迭代版本中，暂不支持模糊查询，仅支持完全匹配查询。
+        /// </remarks>
+        public static IQueryable<ProblemEntity> QueryProblemEntitiesByTitle(IQueryable<ProblemEntity> dataset, string title)
+        {
+            if (dataset == null)
+                throw new ArgumentNullException(nameof(dataset));
+            if (title == null)
+                throw new ArgumentNullException(nameof(title));
+
+            var entities = from item in dataset
+                           where item.Title == title
+                           select item;
+            return entities;
+        }
+
+        /// <summary>
+        /// 使用给定的题目作者在给定的数据集中查询题目实体对象并返回。
+        /// </summary>
+        /// <param name="dataset">全体数据集。</param>
+        /// <param name="author">要查询的作者。</param>
+        /// <returns>一个可查询对象，该对象可查询到所有的符合要求的实体对象。</returns>
+        /// <exception cref="ArgumentNullException"/>
+        public static IQueryable<ProblemEntity> QueryProblemEntitiesByAuthor(IQueryable<ProblemEntity> dataset, string author)
+        {
+            if (author == null)
+                throw new ArgumentNullException(nameof(author));
+
+            var entities = from item in dataset
+                           where item.Author == author
+                           select item;
+            return entities;
+        }
+
+        /// <summary>
+        /// 使用给定的题目来源在给定的数据集中查询题目实体对象并返回。
+        /// </summary>
+        /// <param name="dataset">全体数据集。</param>
+        /// <param name="source">要查询的题目来源。</param>
+        /// <returns>一个可查询对象，该对象可查询到所有的符合要求的实体对象。</returns>
+        /// <exception cref="ArgumentNullException"/>
+        public static IQueryable<ProblemEntity> QueryProblemEntitiesBySource(IQueryable<ProblemEntity> dataset, string source)
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            var entities = from item in dataset
+                           where item.Source == source
+                           select item;
+            return entities;
+        }
+
+        /// <summary>
         /// 将给定的题目实体对象添加至数据集中。
         /// </summary>
         /// <param name="entity">要添加的题目实体对象。</param>
@@ -49,60 +108,6 @@ namespace BITOJ.Data
         public IQueryable<ProblemEntity> GetAllProblemEntities()
         {
             return Problems;
-        }
-
-        /// <summary>
-        /// 使用给定的题目标题查询题目实体对象并返回。
-        /// </summary>
-        /// <param name="title">要查询的题目标题。</param>
-        /// <returns>一个可查询对象，该对象可查询到所有的符合要求的实体对象。</returns>
-        /// <exception cref="ArgumentNullException"/>
-        /// <remarks>
-        /// 在第一个迭代版本中，暂不支持模糊查询，仅支持完全匹配查询。
-        /// </remarks>
-        public IQueryable<ProblemEntity> QueryProblemEntitiesByTitle(string title)
-        {
-            if (title == null)
-                throw new ArgumentNullException(nameof(title));
-
-            var entities = from item in Problems
-                           where item.Title == title
-                           select item;
-            return entities;
-        }
-
-        /// <summary>
-        /// 使用给定的题目作者查询题目实体对象并返回。
-        /// </summary>
-        /// <param name="author">要查询的作者。</param>
-        /// <returns>一个可查询对象，该对象可查询到所有的符合要求的实体对象。</returns>
-        /// <exception cref="ArgumentNullException"/>
-        public IQueryable<ProblemEntity> QueryProblemEntitiesByAuthor(string author)
-        {
-            if (author == null)
-                throw new ArgumentNullException(nameof(author));
-
-            var entities = from item in Problems
-                           where item.Author == author
-                           select item;
-            return entities;
-        }
-
-        /// <summary>
-        /// 使用给定的题目来源查询题目实体对象并返回。
-        /// </summary>
-        /// <param name="source">要查询的题目来源。</param>
-        /// <returns>一个可查询对象，该对象可查询到所有的符合要求的实体对象。</returns>
-        /// <exception cref="ArgumentNullException"/>
-        public IQueryable<ProblemEntity> QueryProblemEntitiesBySource(string source)
-        {
-            if (source == null)
-                throw new ArgumentNullException(nameof(source));
-
-            var entities = from item in Problems
-                           where item.Source == source
-                           select item;
-            return entities;
         }
 
         /// <summary>
